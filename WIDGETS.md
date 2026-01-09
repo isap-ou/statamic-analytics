@@ -8,7 +8,7 @@
 | ✅ | Top Pages (Trend) | **Table (Top pages)** | `fetchVisitorsAndPageViewsByDate(Period)` | `activeUsers`, `screenPageViews` | `pageTitle`, `fullPageUrl`, `date` | — | Top 25 pages with a Trend column (5 normalized bars per page). |
 | ✅ | Traffic (Daily totals) | **Table (Daily totals)** | `fetchTotalVisitorsAndPageViews(Period)` | `activeUsers`, `screenPageViews` | `date` | — | Daily totals for the whole site. No chart/KPI aggregation in UI. |
 | ✅ | Most Visited Pages | **Table (Ranked)** | `fetchMostVisitedPages(Period, max)` | `screenPageViews` | `pageTitle`, `fullPageUrl` | — | Alternative top-pages list (ranked). |
-| ⬜ | Top Referrers | **Table (Ranked)** | `fetchTopReferrers(Period, max)` | `screenPageViews` | `sessionSource` / referrer | — | Where traffic comes from. |
+| ✅ | Top Referrers | **Table (Ranked)** | `fetchTopReferrers(Period, max)` | `screenPageViews` | `sessionSource` / referrer | — | Where traffic comes from. |
 | ⬜ | New vs Returning Users | **Breakdown (Table)** | `fetchUserTypes(Period)` | `activeUsers` | `newVsReturning` | — | Audience split by user type. |
 | ⬜ | Top Browsers | **Table (Ranked)** | `fetchTopBrowsers(Period, max)` | `screenPageViews` | `browser` | — | Technical audience profile. |
 | ⬜ | Top Countries | **Table (Ranked)** | `fetchTopCountries(Period, max)` | `screenPageViews` | `country` | — | Geographic distribution. |

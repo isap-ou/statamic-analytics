@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Isapp\GoogleAnalytics\Controllers;
 
@@ -23,17 +23,20 @@ class ChartController extends CpController
             'start' => ['required', 'date'],
             'end' => ['required', 'date'],
         ]);
+
         $method = 'fetch' . $chart;
-        if (! method_exists(\Spatie\Analytics\Analytics::class, $method)) {
+
+        if (! method_exists(\Isapp\GoogleAnalytics\Analytics\Analytics::class, $method)) {
             return new JsonResponse(status: 404);
         }
 
         app()->make('config')->set('analytics.property_id', $validated['property_id']);
+
         $period = Period::create(Carbon::parse($validated['start']), Carbon::parse($validated['end']));
 
         $data = match ($chart) {
-            'VisitorsAndPageViews', 'MostVisitedPages' => Analytics::$method($period, 500),
-            default => Analytics::$method($period)
+            'VisitorsAndPageViews', 'MostVisitedPages' => Analytics::$method($period, 1000),
+            default => Analytics::$method($period, 10000)
         };
 
         return new JsonResponse($data);

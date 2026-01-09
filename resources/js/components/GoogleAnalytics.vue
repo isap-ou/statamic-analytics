@@ -3,9 +3,10 @@ import VisitorsAndPageViews from "./tables/VisitorsAndPageViews.vue";
 import VisitorsAndPageViewsByDate from "./tables/VisitorsAndPageViewsByDate.vue";
 import TotalVisitorsAndPageviews from "./charts/TotalVisitorsAndPageviews.vue";
 import MostVisitedPages from "./tables/MostVisitedPages.vue";
+import TopReferrers from "./tables/TopReferrers.vue";
 
 export default {
-  components: {VisitorsAndPageViews, TotalVisitorsAndPageviews, VisitorsAndPageViewsByDate, MostVisitedPages},
+  components: {VisitorsAndPageViews, TotalVisitorsAndPageviews, VisitorsAndPageViewsByDate, MostVisitedPages, TopReferrers},
   props: {
     charts: Array,
     propertyId: String,
