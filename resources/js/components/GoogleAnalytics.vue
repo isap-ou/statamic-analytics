@@ -4,9 +4,17 @@ import VisitorsAndPageViewsByDate from "./tables/VisitorsAndPageViewsByDate.vue"
 import TotalVisitorsAndPageviews from "./charts/TotalVisitorsAndPageviews.vue";
 import MostVisitedPages from "./tables/MostVisitedPages.vue";
 import TopReferrers from "./tables/TopReferrers.vue";
+import UserTypes from "./tables/UserTypes.vue";
 
 export default {
-  components: {VisitorsAndPageViews, TotalVisitorsAndPageviews, VisitorsAndPageViewsByDate, MostVisitedPages, TopReferrers},
+  components: {
+    VisitorsAndPageViews,
+    TotalVisitorsAndPageviews,
+    VisitorsAndPageViewsByDate,
+    MostVisitedPages,
+    TopReferrers,
+    UserTypes
+  },
   props: {
     charts: Array,
     propertyId: String,
@@ -33,7 +41,7 @@ export default {
       },
       range: {
         date: {
-          start: Vue.moment().subtract(3, 'month').format('YYYY-MM-DD'),
+          start: Vue.moment().subtract(1, 'months').format('YYYY-MM-DD'),
           end: Vue.moment().subtract(1, 'days').format('YYYY-MM-DD'),
         }
       }
@@ -72,6 +80,8 @@ export default {
   </div>
 </template>
 
-<style scoped>
-
+<style>
+.actions-column{
+  display: none;
+}
 </style>

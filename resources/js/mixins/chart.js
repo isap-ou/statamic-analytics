@@ -8,6 +8,7 @@ import {
     LineElement,
     PointElement,
     Title,
+    ArcElement,
     Tooltip
 } from 'chart.js'
 
@@ -15,6 +16,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
     CategoryScale,
     LinearScale,
     PointElement,
+    ArcElement,
     LineElement,
     Title,
     Tooltip,
@@ -22,4 +24,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
     Legend
 )
 
-export default {}
+export default {
+    computed: {
+    }
+}

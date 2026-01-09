@@ -9,6 +9,10 @@ export default {
     data: Array,
     sortColumn: String,
     sortDirection: String,
+    noPagination: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
@@ -41,6 +45,7 @@ export default {
 
 
       <data-list-pagination
+        v-if="!noPagination"
         class="py-2 px-4 border-t bg-gray-200 rounded-b-lg text-sm dark:bg-dark-650 dark:border-gray-900"
         :resource-meta="meta"
         :per-page="perPage"

@@ -9,36 +9,6 @@ export default {
   mixins: [chart, fetch],
   name: "TotalVisitorsAndPageviews",
   computed: {
-    chartData() {
-      const data = this.data.map(item => ({
-        label: Vue.moment(item.date),
-        activeUsers: item.activeUsers || 0,
-        screenPageViews: item.screenPageViews || 0,
-      })).sort((a, b) => a.label - b.label);
-
-      return {
-        labels: data.map(item => item.label.format('DD.MM.YYYY')),
-        datasets: [
-          {
-            data: data.map(item => item.activeUsers),
-            label: 'Active users',
-            backgroundColor: 'rgb(54, 162, 235)',
-            borderColor: 'rgb(54, 162, 235)',
-            cubicInterpolationMode: 'monotone',
-            yAxisID: 'y',
-          },
-          {
-            data: data.map(item => item.screenPageViews),
-            label: 'Screen page views',
-            backgroundColor: 'rgb(255, 206, 86)',
-            cubicInterpolationMode: 'monotone',
-            borderColor: 'rgb(255, 206, 86)',
-            yAxisID: 'y1',
-          }
-        ]
-      }
-
-    },
     chartOptions() {
       return {
         responsive: true,
@@ -82,6 +52,36 @@ export default {
           intersect: false
         }
       }
+    },
+    chartData() {
+      const data = this.data.map(item => ({
+        label: Vue.moment(item.date),
+        activeUsers: item.activeUsers || 0,
+        screenPageViews: item.screenPageViews || 0,
+      })).sort((a, b) => a.label - b.label);
+
+      return {
+        labels: data.map(item => item.label.format('DD.MM.YYYY')),
+        datasets: [
+          {
+            data: data.map(item => item.activeUsers),
+            label: 'Active users',
+            backgroundColor: 'rgb(54, 162, 235)',
+            borderColor: 'rgb(54, 162, 235)',
+            cubicInterpolationMode: 'monotone',
+            yAxisID: 'y',
+          },
+          {
+            data: data.map(item => item.screenPageViews),
+            label: 'Screen page views',
+            backgroundColor: 'rgb(255, 206, 86)',
+            cubicInterpolationMode: 'monotone',
+            borderColor: 'rgb(255, 206, 86)',
+            yAxisID: 'y1',
+          }
+        ]
+      }
+
     },
     users() {
       return sumBy(this.data, 'activeUsers');
