@@ -17,7 +17,7 @@ use function config;
 use function response;
 use function view;
 
-class GAConfigController extends CpController
+class ConfigController extends CpController
 {
     use HasGoogleAnalyticsConfig;
 

@@ -2,14 +2,16 @@
 
 import Card from "../common/Card.vue";
 import fetch from "../../mixins/fetch";
+import Table from "../common/Table.vue";
+import pagination from "../../mixins/pagination";
 
 export default {
   name: "VisitorsAndPageViewsByDate", components: {Table, Card},
-  mixins: [fetch],
+  mixins: [fetch, pagination],
   data() {
     return {
 
-      sortColumn: 'activeUsers',
+      sortColumn: 'views',
       sortDirection: 'desc',
       columns: [{
         'field': 'title',
@@ -41,10 +43,30 @@ export default {
 
 <template>
   <Card
-    header="Top Pages (Engagement)"
+    header="Top Pages (with time buckets)"
     :loading="loading"
   >
-    <Table v-bind="{columns, data, sortColumn, sortDirection}"/>
+    <Table v-bind="{columns, data, sortColumn, sortDirection}">
+      <template
+        slot="cell-title"
+        slot-scope="{ row: item, value }"
+      >
+        <a
+          :href="ensureSchema(item.key)"
+          target="_blank"
+        >{{ value }}</a>
+      </template>
+      <template slot="cell-bars" slot-scope="{ value: bars }">
+        <div class="flex items-end h-5">
+          <div
+            v-for="(h, i) in bars"
+            :key="i"
+            class="w-4 rounded-t-sm bg-[rgb(67,169,255)] dark:bg-[rgb(41,143,230))]"
+            :style="{ height: `${Math.max(2, h)}%` }"
+          />
+        </div>
+      </template>
+    </Table>
   </Card>
 </template>
 

@@ -90,6 +90,17 @@ export default {
         sorted(sortColumn, sortDirection) {
             this.sortColumn = sortColumn;
             this.sortDirection = sortDirection;
+        },
+
+        ensureSchema(url) {
+            if (!url) return url;
+
+            // если схема уже есть — не трогаем
+            if (/^[a-z]+:\/\//i.test(url)) {
+                return url;
+            }
+
+            return `https://${url}`;
         }
     },
 

@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Isapp\GoogleAnalytics;
+namespace Isapp\GoogleAnalytics\Concerns;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Isapp\GoogleAnalytics\Models\Config;
 use Statamic\Facades\YAML;
 
 use function array_merge;
@@ -17,7 +18,7 @@ trait HasGoogleAnalyticsConfig
         $defaultSiteHandle = 'default';
 
         return collect($config)->map(
-            fn ($config, $handle) => new GoogleAnalyticsConfig($handle, $config, $handle === $defaultSiteHandle)
+            fn ($config, $handle) => new Config($handle, $config, $handle === $defaultSiteHandle)
         );
     }
 

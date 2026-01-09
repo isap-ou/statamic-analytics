@@ -1,6 +1,6 @@
 <script>
 import VisitorsAndPageViews from "./tables/VisitorsAndPageViews.vue";
-import VisitorsAndPageViewsByDate from "./charts/VisitorsAndPageViewsByDate.vue";
+import VisitorsAndPageViewsByDate from "./tables/VisitorsAndPageViewsByDate.vue";
 import TotalVisitorsAndPageviews from "./charts/TotalVisitorsAndPageviews.vue";
 import MostVisitedPages from "./tables/MostVisitedPages.vue";
 

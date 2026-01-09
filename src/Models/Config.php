@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Isapp\GoogleAnalytics;
+namespace Isapp\GoogleAnalytics\Models;
 
 use Statamic\Contracts\Data\Augmentable;
 use Statamic\Data\HasAugmentedData;
 
-class GoogleAnalyticsConfig implements Augmentable
+class Config implements Augmentable
 {
     use HasAugmentedData;
-
-    protected $config;
 
     public function __construct(protected $handle, protected $rawConfig, protected $isDefault = false) {}
 

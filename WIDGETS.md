@@ -1,32 +1,32 @@
 # GA4 Widgets (spatie/laravel-analytics)
 
-> Default visualization for time‑series is **Line chart** (as chosen).
+> Default visualization in this addon is **Table (Top Pages)**. No charts/KPI cards are rendered in the CP UI.
 
-| Method | Display Type | UI Title | Description |
-|---|---|---|---|
-| `fetchVisitorsAndPageViews(Period)` | **Table (Top pages)** | Top Pages (Engagement) | Pages with `pageTitle`, `screenPageViews`, `activeUsers` for the period. Good for ranking content by engagement. |
-| `fetchVisitorsAndPageViewsByDate(Period)` | **Line chart** | Users & Page Views Over Time | Time‑series of `activeUsers` and `screenPageViews` by date. Use for trend analysis. |
-| `fetchTotalVisitorsAndPageViews(Period)` | **Line chart + KPI** | Traffic Overview | Returns daily rows; render as a line chart and aggregate to show total KPIs (sum of users & views) for the period. |
-| `fetchMostVisitedPages(Period, max)` | **Table (Ranked)** | Most Visited Pages | Top pages with `fullPageUrl`, `pageTitle`, `screenPageViews`. Primary content performance list. |
-| `fetchTopReferrers(Period, max)` | **Table (Ranked)** | Top Referrers | Referrer URLs/domains with `screenPageViews`. Shows where traffic comes from. |
-| `fetchUserTypes(Period)` | **Donut / Breakdown** | New vs Returning Users | `newVsReturning` with `activeUsers`. New vs returning audience split. |
-| `fetchTopBrowsers(Period, max)` | **Bar / Table** | Top Browsers | Browsers with `screenPageViews`. Technical audience profile. |
-| `fetchTopCountries(Period, max)` | **Bar / Table** | Top Countries | Countries with `screenPageViews`. Geographic distribution. |
-| `fetchTopOperatingSystems(Period, max)` | **Bar / Table** | Operating Systems | Operating systems with `screenPageViews`. Device OS breakdown. |
-| `get(Period, metrics, dimensions, ...)` | **Custom (Builder)** | Custom Report | Generic GA4 query for building custom widgets (any metrics/dimensions, filters, order, limits). |
+| Status | UI Title | Display Type | Method | Metrics | Dimensions | Filters | Notes |
+|---|---|---|---|---|---|---|---|
+| ✅ | Top Pages | **Table (Top pages)** | `fetchVisitorsAndPageViews(Period)` | `activeUsers`, `screenPageViews` | `pageTitle` (and/or `fullPageUrl`) | — | Primary content ranking table for the selected period. |
+| ✅ | Top Pages (Trend) | **Table (Top pages)** | `fetchVisitorsAndPageViewsByDate(Period)` | `activeUsers`, `screenPageViews` | `pageTitle`, `fullPageUrl`, `date` | — | Top 25 pages with a Trend column (5 normalized bars per page). |
+| ✅ | Traffic (Daily totals) | **Table (Daily totals)** | `fetchTotalVisitorsAndPageViews(Period)` | `activeUsers`, `screenPageViews` | `date` | — | Daily totals for the whole site. No chart/KPI aggregation in UI. |
+| ✅ | Most Visited Pages | **Table (Ranked)** | `fetchMostVisitedPages(Period, max)` | `screenPageViews` | `pageTitle`, `fullPageUrl` | — | Alternative top-pages list (ranked). |
+| ⬜ | Top Referrers | **Table (Ranked)** | `fetchTopReferrers(Period, max)` | `screenPageViews` | `sessionSource` / referrer | — | Where traffic comes from. |
+| ⬜ | New vs Returning Users | **Breakdown (Table)** | `fetchUserTypes(Period)` | `activeUsers` | `newVsReturning` | — | Audience split by user type. |
+| ⬜ | Top Browsers | **Table (Ranked)** | `fetchTopBrowsers(Period, max)` | `screenPageViews` | `browser` | — | Technical audience profile. |
+| ⬜ | Top Countries | **Table (Ranked)** | `fetchTopCountries(Period, max)` | `screenPageViews` | `country` | — | Geographic distribution. |
+| ⬜ | Operating Systems | **Table (Ranked)** | `fetchTopOperatingSystems(Period, max)` | `screenPageViews` | `operatingSystem` | — | Device OS breakdown. |
+| ⬜ | Custom Report | **Custom (Builder)** | `get(Period, metrics, dimensions, ...)` | any | any | optional | Generic GA4 query builder (metrics/dimensions, filters, order, limits). |
 
 
 ## GA4 Widgets (Not covered by spatie methods)
 
-| UI Title | Display Type | Metrics | Dimensions | Filters | Notes |
-|---|---|---|---|---|---|
-| Realtime Users | **Realtime cards / table** | `activeUsers` | `pagePath`, `eventName` | realtime scope | Live users, pages and events right now (GA4 realtime via `get()` realtime). |
-| Landing Pages | **Table (Ranked)** | `sessions`, `activeUsers`, `engagementRate` | `landingPage` | — | Entry pages where sessions start. GA → Reports → Landing pages. |
-| Exit Pages | **Table (Ranked)** | `sessions` | `exitPage` | — | Pages where users leave the site. |
-| Site Search | **Table (Ranked)** | `eventCount` | `searchTerm` | `eventName = search` | What users search on the site. |
-| Zero‑result Searches | **Table (Ranked)** | `eventCount` | `searchTerm` | `eventName = search` AND `searchResults = 0` | Queries that returned no results. |
-| Page Engagement | **Table (Ranked)** | `averageSessionDuration`, `engagementRate` | `pagePath` | — | How engaging each page is. |
-| Conversion Paths | **Table (Ranked)** | `eventCount` | `pagePath` | `isKeyEvent = true` | Pages that lead to conversions. |
-| Time of Day | **Bar / Line** | `activeUsers` | `hour` | — | When users are most active during the day. |
-| Cities | **Bar / Table** | `screenPageViews` | `city` | — | Traffic by city (more granular than countries). |
-| Content Growth / Decline | **Table (Δ comparison)** | `screenPageViews` | `pagePath` | compare two periods | Compare current vs previous period to show biggest winners & losers. |
+| Status | UI Title | Display Type | Method | Metrics | Dimensions | Filters | Notes |
+|---|---|---|---|---|---|---|---|
+| ⬜ | Realtime Users | **Realtime cards / table** | `get()` (realtime) | `activeUsers` | `pagePath`, `eventName` | realtime scope | Live users, pages and events right now. |
+| ⬜ | Landing Pages | **Table (Ranked)** | `get()` | `sessions`, `activeUsers`, `engagementRate` | `landingPage` | — | Entry pages where sessions start. GA → Reports → Landing pages. |
+| ⬜ | Exit Pages | **Table (Ranked)** | `get()` | `sessions` | `exitPage` | — | Pages where users leave the site. |
+| ⬜ | Site Search | **Table (Ranked)** | `get()` | `eventCount` | `searchTerm` | `eventName = search` | What users search on the site. |
+| ⬜ | Zero-result Searches | **Table (Ranked)** | `get()` | `eventCount` | `searchTerm` | `eventName = search` AND `searchResults = 0` | Queries that returned no results. |
+| ⬜ | Page Engagement | **Table (Ranked)** | `get()` | `averageSessionDuration`, `engagementRate` | `pagePath` | — | How engaging each page is. |
+| ⬜ | Conversion Paths | **Table (Ranked)** | `get()` | `eventCount` | `pagePath` | `isKeyEvent = true` | Pages that lead to conversions. |
+| ⬜ | Time of Day | **Bar / Table** | `get()` | `activeUsers` | `hour` | — | When users are most active during the day. |
+| ⬜ | Cities | **Table (Ranked)** | `get()` | `screenPageViews` | `city` | — | Traffic by city (more granular than countries). |
+| ⬜ | Content Growth / Decline | **Table (Δ comparison)** | `get()` | `screenPageViews` | `pagePath` | compare two periods | Biggest winners & losers vs previous period. |

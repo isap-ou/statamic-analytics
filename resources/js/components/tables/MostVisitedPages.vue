@@ -2,11 +2,12 @@
 import Card from "../common/Card.vue";
 import fetch from "../../mixins/fetch";
 import Table from "../common/Table.vue";
+import pagination from "../../mixins/pagination";
 
 export default {
   name: "MostVisitedPages",
   components: {Table, Card},
-  mixins: [fetch],
+  mixins: [fetch, pagination],
   data() {
     return {
       sortColumn: 'screenPageViews',
@@ -26,18 +27,8 @@ export default {
   },
   computed: {
     items() {
-      const ensureSchema = (url) => {
-        if (!url) return url;
-
-        // если схема уже есть — не трогаем
-        if (/^[a-z]+:\/\//i.test(url)) {
-          return url;
-        }
-
-        return `https://${url}`;
-      }
       return this.data.map(item => ({
-        url: ensureSchema(item.fullPageUrl),
+        url: this.ensureSchema(item.fullPageUrl),
         ...item
       }))
     }
@@ -58,7 +49,6 @@ export default {
         <a
           :href="item.url"
           target="_blank"
-          class="text-blue"
         >{{ value }}</a>
       </template>
     </Table>

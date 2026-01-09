@@ -7,7 +7,7 @@ namespace Isapp\GoogleAnalytics;
 use Illuminate\Support\Facades\Route;
 use Isapp\GoogleAnalytics\Analytics\Analytics;
 use Isapp\GoogleAnalytics\Controllers\ChartController;
-use Isapp\GoogleAnalytics\Controllers\GAConfigController;
+use Isapp\GoogleAnalytics\Controllers\ConfigController;
 use Isapp\GoogleAnalytics\Widgets\GoogleAnalytics;
 use Spatie\Analytics\AnalyticsClient;
 use Statamic\Facades\CP\Nav;
@@ -56,8 +56,8 @@ class ServiceProvider extends AddonServiceProvider
         });
 
         $this->registerCpRoutes(function () {
-            Route::get('google-analytics', [GAConfigController::class, 'index'])->name('isapp-ga.config.index');
-            Route::patch('google-analytics', [GAConfigController::class, 'update'])->name('isapp-ga.config.update');
+            Route::get('google-analytics', [ConfigController::class, 'index'])->name('isapp-ga.config.index');
+            Route::patch('google-analytics', [ConfigController::class, 'update'])->name('isapp-ga.config.update');
             Route::get('charts/{chart?}', ChartController::class)->name('isapp-ga.chart');
         });
     }
