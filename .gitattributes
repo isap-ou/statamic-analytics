@@ -3,3 +3,11 @@ phpunit.xml               export-ignore
 pint.json               export-ignore
 .github               export-ignore
 tests               export-ignore
+resources/css               export-ignore
+resources/js               export-ignore
+package.json               export-ignore
+yarn.lock               export-ignore
+vite.config.js               export-ignore
+postcss.config.js               export-ignore
+WIDGETS.md               export-ignore
+tailwind.config.js               export-ignore
