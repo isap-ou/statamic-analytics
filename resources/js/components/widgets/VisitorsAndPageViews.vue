@@ -14,17 +14,17 @@ export default {
       sortDirection: 'desc',
       columns: [{
         'field': 'pageTitle',
-        'label': 'Page Title',
+        'label': __('isapp-analytics::cp.Page Title'),
         listable: true,
         sortable: true,
       }, {
         'field': 'activeUsers',
-        'label': 'Active users',
+        'label': __('isapp-analytics::cp.Active users'),
         numeric: true,
         sortable: true,
       }, {
         'field': 'screenPageViews',
-        'label': 'Page views',
+        'label': __('isapp-analytics::cp.Page views'),
         numeric: true,
         sortable: true,
       }]

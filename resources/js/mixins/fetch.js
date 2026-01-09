@@ -27,6 +27,7 @@ export default {
     },
     methods: {
         fetch() {
+            this.data = [];
             this.loading = true;
             this.$axios.get(this.url + '/' + this.$options.name, {
                 'params': {

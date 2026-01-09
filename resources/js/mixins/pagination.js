@@ -1,17 +1,3 @@
-// Vue 2 mixin: Laravel-like pagination for a local array (NO URLs)
-// It recalculates when `currentPage` / `perPage` change.
-//
-// Usage:
-// mixins: [paginationMixin]
-// computed: {
-//   paginated() { return this.paginate(this.items) }
-// }
-//
-// Template example:
-// <div v-for="row in paginated.data" :key="row.id">...</div>
-// <button :disabled="!paginated.links.prev" @click="setPage(currentPage - 1)">Prev</button>
-// <button :disabled="!paginated.links.next" @click="setPage(currentPage + 1)">Next</button>
-
 import {orderBy} from "lodash-es";
 
 export default {
@@ -27,7 +13,6 @@ export default {
     computed: {
         meta() {
             const list = Array.isArray(this.data) ? this.data : [];
-            console.log(this.perPage);
             let page = this.currentPage;
             let perPage = this.perPage;
 
@@ -95,7 +80,6 @@ export default {
         ensureSchema(url) {
             if (!url) return url;
 
-            // если схема уже есть — не трогаем
             if (/^[a-z]+:\/\//i.test(url)) {
                 return url;
             }

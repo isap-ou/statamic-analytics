@@ -14,12 +14,12 @@ export default {
       sortDirection: 'desc',
       columns: [{
         'field': 'pageTitle',
-        'label': 'Page',
+        'label': __('isapp-analytics::cp.Page'),
         listable: true,
         sortable: true,
       }, {
         'field': 'screenPageViews',
-        'label': 'View',
+        'label': __('isapp-analytics::cp.Views'),
         numeric: true,
         sortable: true,
       }]

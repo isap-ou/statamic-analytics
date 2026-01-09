@@ -65,18 +65,18 @@ export default {
         datasets: [
           {
             data: data.map(item => item.activeUsers),
-            label: 'Active users',
-            backgroundColor: 'rgb(54, 162, 235)',
-            borderColor: 'rgb(54, 162, 235)',
+            label: __('isapp-analytics::cp.Active users'),
+            backgroundColor: this.chartColors[0],
+            borderColor: this.chartColors[0],
             cubicInterpolationMode: 'monotone',
             yAxisID: 'y',
           },
           {
             data: data.map(item => item.screenPageViews),
-            label: 'Screen page views',
-            backgroundColor: 'rgb(255, 206, 86)',
+            label: __('isapp-analytics::cp.Page views'),
+            backgroundColor: this.chartColors[1],
+            borderColor: this.chartColors[1],
             cubicInterpolationMode: 'monotone',
-            borderColor: 'rgb(255, 206, 86)',
             yAxisID: 'y1',
           }
         ]
@@ -96,15 +96,15 @@ export default {
       const ratio = this.pagesPerUser;
 
       if (ratio < 1.5) {
-        return 'Low';
+        return __('isapp-analytics::cp.Low');
       }
       if (ratio < 3) {
-        return 'Medium';
+        return __('isapp-analytics::cp.Medium');
       }
       if (ratio < 5) {
-        return 'High';
+        return __('isapp-analytics::cp.High');
       }
-      return 'Excellent';
+      return __('isapp-analytics::cp.Excellent');
     }
 
   }
@@ -114,22 +114,22 @@ export default {
   <Card header="Traffic Overview">
     <div class="grid grid-cols-4 gap-4 mb-6 p-4">
       <div class="card p-4">
-        <div class="text-xs text-gray-500">Active Users</div>
+        <div class="text-xs text-gray-500">{{ __('isapp-analytics::cp.Active Users') }}</div>
         <div class="text-2xl font-semibold">{{ users }}</div>
       </div>
 
       <div class="card p-4">
-        <div class="text-xs text-gray-500">Page Views</div>
+        <div class="text-xs text-gray-500">{{ __('isapp-analytics::cp.Page Views') }}</div>
         <div class="text-2xl font-semibold">{{ views }}</div>
       </div>
 
       <div class="card p-4">
-        <div class="text-xs text-gray-500">Pages / User</div>
+        <div class="text-xs text-gray-500">{{ __('isapp-analytics::cp.Pages / User') }}</div>
         <div class="text-2xl font-semibold">{{ pagesPerUser }}</div>
       </div>
 
       <div class="card p-4">
-        <div class="text-xs text-gray-500">Engagement</div>
+        <div class="text-xs text-gray-500">{{ __('isapp-analytics::cp.Engagement') }}</div>
         <div class="text-2xl font-semibold">{{ engagement }}</div>
       </div>
     </div>

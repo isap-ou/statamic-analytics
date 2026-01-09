@@ -6,7 +6,8 @@ import Table from "../common/Table.vue";
 import pagination from "../../mixins/pagination";
 
 export default {
-  name: "VisitorsAndPageViewsByDate", components: {Table, Card},
+  name: "VisitorsAndPageViewsByDate",
+  components: {Table, Card},
   mixins: [fetch, pagination],
   data() {
     return {
@@ -15,26 +16,26 @@ export default {
       sortDirection: 'desc',
       columns: [{
         'field': 'title',
-        'label': 'Page Title',
+        'label': __('isapp-analytics::cp.Page Title'),
         sortable: true,
       }, {
         'field': 'users',
-        'label': 'Users',
+        'label': __('isapp-analytics::cp.Users'),
         numeric: true,
         sortable: true,
       }, {
         'field': 'views',
-        'label': 'Views',
+        'label': __('isapp-analytics::cp.Views'),
         numeric: true,
         sortable: true,
       }, {
         'field': 'pagesPerUser',
-        'label': 'Pages/User',
+        'label': __('isapp-analytics::cp.Pages/User'),
         numeric: true,
         sortable: true,
       }, {
         'field': 'bars',
-        'label': 'Trend',
+        'label': __('isapp-analytics::cp.Trend'),
       }]
     }
   }
@@ -56,8 +57,11 @@ export default {
           target="_blank"
         >{{ value }}</a>
       </template>
-      <template slot="cell-bars" slot-scope="{ value: bars }">
-        <div class="flex items-end h-5">
+      <template
+        slot="cell-bars"
+        slot-scope="{ value: bars }"
+      >
+        <div class="flex items-end space-x-[1px] h-5">
           <div
             v-for="(h, i) in bars"
             :key="i"

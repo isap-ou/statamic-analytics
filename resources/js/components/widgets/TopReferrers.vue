@@ -17,11 +17,11 @@ export default {
       sortDirection: 'desc',
       columns: [{
         'field': 'pageReferrer',
-        'label': 'Referrer',
+        'label': __('isapp-analytics::cp.Referrer'),
         sortable: true,
       }, {
         'field': 'screenPageViews',
-        'label': 'Page views',
+        'label': __('isapp-analytics::cp.Page views'),
         numeric: true,
         sortable: true,
       }]
@@ -33,7 +33,7 @@ export default {
 <template>
   <Card
     :loading="loading"
-    header=""
+    header="Top referrers"
   >
     <Table v-bind="{columns, sortColumn,sortDirection, data}">
       <template

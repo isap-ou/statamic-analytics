@@ -10,8 +10,9 @@ use Isapp\GoogleAnalytics\Models\Config;
 use Statamic\Facades\YAML;
 
 use function array_merge;
+use function storage_path;
 
-trait HasGoogleAnalyticsConfig
+trait HasConfig
 {
     protected function hydrateConfig($config): Collection
     {
@@ -55,13 +56,15 @@ trait HasGoogleAnalyticsConfig
 
     protected function path(): string
     {
-        return resource_path('google-analytics.yaml');
+        return storage_path('app/private/google-analytics/google-analytics.yaml');
     }
 
     protected function getFallbackConfig(): array
     {
         return [
-            'default' => [],
+            'default' => [
+                'property_id' => config('analytics.property_id'),
+            ],
         ];
     }
 }

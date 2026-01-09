@@ -7,21 +7,21 @@ import {round, sumBy, trim} from "lodash-es";
 import chart from "../../mixins/chart";
 
 export default {
-  name: "UserTypes",
+  name: "TopCountries",
   methods: {trim},
   mixins: [fetch, pagination, chart],
   components: {Table, Card},
   data() {
     return {
 
-      sortColumn: null,
+      sortColumn: 'screenPageViews',
       sortDirection: 'desc',
       columns: [{
-        'field': 'title',
-        'label': __('isapp-analytics::cp.Type'),
+        'field': 'country',
+        'label': __('isapp-analytics::cp.Country'),
       }, {
-        'field': 'users',
-        'label': __('isapp-analytics::cp.Users'),
+        'field': 'screenPageViews',
+        'label': __('isapp-analytics::cp.Page views'),
         numeric: true,
       }, {
         'field': 'share',
@@ -32,23 +32,23 @@ export default {
 
   computed: {
     items() {
-      const total = sumBy(this.data, 'activeUsers')
+      const total = sumBy(this.data, 'screenPageViews')
       return this.data.map(item => ({
-        title: __('isapp-analytics::cp.' + String(item.newVsReturning).charAt(0).toUpperCase() + String(item.newVsReturning).slice(1)),
-        users: item.activeUsers,
-        share: round(item.activeUsers * 100 / total, 2) + '%'
+        country: item.country,
+        screenPageViews: item.screenPageViews,
+        share: round(item.screenPageViews * 100 / total, 2) + '%'
       }))
     },
 
     chartData() {
 
       return {
-        labels: this.data.map(item => __('isapp-analytics::cp.' + String(item.newVsReturning).charAt(0).toUpperCase() + String(item.newVsReturning).slice(1))),
+        labels: this.data.map(item => item.country),
         datasets: [
           {
-            data: this.data.map(item => item.activeUsers),
+            data: this.data.map(item => item.screenPageViews),
             backgroundColor: this.chartColors,
-            borderColor: this.chartColors,
+            borderWidth: 0,
             hoverOffset: 4
           }]
       }
@@ -61,14 +61,15 @@ export default {
 <template>
   <Card
     :loading="loading"
-    header="New vs Returning Users"
+    header="Top Countries"
   >
+
     <div class="grid grid-cols-1 lg:flex flex-row gap-6 p-4 items-center justify-center">
-      <div class="col-span-2 lg:max-w-72">
+
+      <div class="col-span-2 lg:max-w-112 lg:w-full">
         <div v-if="!loading">
           <chart-pie
             :chart-data="chartData"
-            :chart-options="{}"
           />
         </div>
       </div>

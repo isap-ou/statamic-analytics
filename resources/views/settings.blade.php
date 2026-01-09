@@ -4,11 +4,11 @@
 @section('title', __('Google Analytics settings'))
 
 @section('content')
-    <sites-edit-form
-            :blueprint='@json($blueprint) }}'
-            :initial-values='@json($values) }}'
-            :meta='@json($meta)'
+    <isapp-analytics-settings
+            :blueprint="{{ json_encode($blueprint) }}"
+            :initial-values="{{ json_encode($values) }}"
+            :meta="{{ json_encode($meta) }}"
             url="{{ cp_route('isapp-ga.config.update') }}"
             class="-mb-8"
-    ></sites-edit-form>
+    ></isapp-analytics-settings>
 @stop

@@ -58,7 +58,3 @@ export default {
     </div>
   </data-list>
 </template>
-
-<style scoped>
-
-</style>

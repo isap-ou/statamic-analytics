@@ -13,7 +13,7 @@ export default {
 <template>
   <div class="card card-lg p-0 content">
     <header>
-      <h3 v-text="header"></h3>
+      <h3 v-text="__('isapp-analytics::cp.' + header)"></h3>
     </header>
     <div v-if="!loading">
       <slot/>

@@ -9,65 +9,65 @@ fields:
     field:
       type: hidden
       default: 'default'
-  - handle: service_account_credentials
-    field:
-      type: files
-      display: 'Client secret json file'
+#  - handle: service_account_credentials
+#    field:
+#      type: files
+#      display: 'Client secret json file'
   - handle: widgets
     field:
       type: section
-      display: Widgets
+      display: 'isapp-analytics::cp.WidgetsHeadline'
   - handle: visitors_and_page_views
     field:
       default: false
       type: toggle
-      display: 'Visitors and page views'
+      display: 'isapp-analytics::cp.Visitors and page views'
       width: 33
   - handle: visitors_and_page_views_by_date
     field:
       default: false
       type: toggle
       width: 33
-      display: 'Visitors and page views by date'
+      display: 'isapp-analytics::cp.Visitors and page views by date'
   - handle: total_visitors_and_pageviews
     field:
       default: false
       type: toggle
-      display: 'Total visitors and pageviews'
+      display: 'isapp-analytics::cp.Total visitors and pageviews'
       width: 33
   - handle: most_visited_pages
     field:
       default: false
       type: toggle
-      display: 'Most visited pages'
+      display: 'isapp-analytics::cp.Most visited pages'
       width: 33
   - handle: top_referrers
     field:
       default: false
       type: toggle
-      display: 'Top referrers'
+      display: 'isapp-analytics::cp.Top referrers'
       width: 33
   - handle: user_types
     field:
       default: false
       type: toggle
-      display: 'User Types'
+      display: 'isapp-analytics::cp.User Types'
       width: 33
   - handle: top_browsers
     field:
       default: false
       type: toggle
-      display: 'Top browsers'
+      display: 'isapp-analytics::cp.Top browsers'
       width: 33
   - handle: top_countries
     field:
       default: false
       type: toggle
-      display: 'Top countries'
+      display: 'isapp-analytics::cp.Top countries'
       width: 33
   - handle: top_operating_systems
     field:
       default: false
       type: toggle
-      display: 'Top operating systems'
+      display: 'isapp-analytics::cp.Top operating systems'
       width: 33

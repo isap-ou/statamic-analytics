@@ -11,9 +11,9 @@
 | ✅ | Most Visited Pages | **Table (Ranked)** | `fetchMostVisitedPages(Period, max)` | `screenPageViews` | `pageTitle`, `fullPageUrl` | — | Alternative top-pages list (ranked). |
 | ✅ | Top Referrers | **Table (Ranked)** | `fetchTopReferrers(Period, max)` | `screenPageViews` | `sessionSource` / referrer | — | Where traffic comes from. |
 | ✅ | New vs Returning Users | **Donut + Table (Breakdown)** | `fetchUserTypes(Period)` | `activeUsers` | `newVsReturning` | — | Audience split by user type. |
-| ⬜ | Top Browsers | **Table (Ranked)** | `fetchTopBrowsers(Period, max)` | `screenPageViews` | `browser` | — | Technical audience profile. |
-| ⬜ | Top Countries | **Table (Ranked)** | `fetchTopCountries(Period, max)` | `screenPageViews` | `country` | — | Geographic distribution. |
-| ⬜ | Operating Systems | **Table (Ranked)** | `fetchTopOperatingSystems(Period, max)` | `screenPageViews` | `operatingSystem` | — | Device OS breakdown. |
+| ✅ | Top Browsers | **Table (Ranked)** | `fetchTopBrowsers(Period, max)` | `screenPageViews` | `browser` | — | Technical audience profile. |
+| ✅ | Top Countries | **Table (Ranked)** | `fetchTopCountries(Period, max)` | `screenPageViews` | `country` | — | Geographic distribution. |
+| ✅ | Operating Systems | **Table (Ranked)** | `fetchTopOperatingSystems(Period, max)` | `screenPageViews` | `operatingSystem` | — | Device OS breakdown. |
 | ⬜ | Custom Report | **Custom (Builder)** | `get(Period, metrics, dimensions, ...)` | any | any | optional | Generic GA4 query builder (metrics/dimensions, filters, order, limits). |
 
 

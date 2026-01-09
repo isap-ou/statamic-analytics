@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Isapp\GoogleAnalytics\Controllers;
 
 use Illuminate\Http\Request;
-use Isapp\GoogleAnalytics\HasGoogleAnalyticsConfig;
+use Isapp\GoogleAnalytics\Concerns\HasConfig;
 use Statamic\Facades\Blueprint;
 use Statamic\Facades\File;
 use Statamic\Facades\User;
@@ -19,7 +19,7 @@ use function view;
 
 class ConfigController extends CpController
 {
-    use HasGoogleAnalyticsConfig;
+    use HasConfig;
 
     public function index()
     {
@@ -33,7 +33,7 @@ class ConfigController extends CpController
             ->addValues($this->values())
             ->preProcess();
 
-        return view('google-analytics::settings', [
+        return view('isapp-analytics::settings', [
             'blueprint' => $blueprint->toPublishArray(),
             'values' => $fields->values(),
             'meta' => $fields->meta(),
@@ -95,6 +95,10 @@ class ConfigController extends CpController
     protected function blueprint()
     {
         $siteFields = YAML::file(__DIR__ . '/../../resources/settings.yaml')->parse();
+
+        //        \array_walk_recursive($siteFields, function (&$value, $key){
+        //            if($key === 'display')
+        //        });
 
         return Blueprint::make()->setContents($siteFields);
     }

@@ -1,4 +1,5 @@
 import {
+    ArcElement,
     BarElement,
     CategoryScale,
     Chart as ChartJS,
@@ -8,7 +9,6 @@ import {
     LineElement,
     PointElement,
     Title,
-    ArcElement,
     Tooltip
 } from 'chart.js'
 
@@ -26,5 +26,22 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
 
 export default {
     computed: {
+        chartColors() {
+            return [
+                '#3B82F6', // Blue
+                '#EAB308', // Yellow
+
+                '#EF476F', // Soft red
+                '#A855F7', // Violet
+                '#06B6D4', // Cyan
+                '#22C55E', // Green
+
+                '#F59E0B', // Amber
+                '#6366F1', // Indigo
+
+                '#94A3B8', // Slate (neutral)
+                '#64748B', // Dark slate (for “Other”)
+            ]
+        }
     }
 }

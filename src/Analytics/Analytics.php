@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Isapp\GoogleAnalytics\Analytics;
 
@@ -57,6 +57,7 @@ class Analytics extends \Spatie\Analytics\Analytics
             // week: key is Monday date (Y-m-d)
             // PHP: N = 1 (Mon) .. 7 (Sun)
             $dayOfWeek = (int) $dt->format('N');
+
             return $dt->modify('-' . ($dayOfWeek - 1) . ' days')->format('Y-m-d');
         };
 
@@ -119,8 +120,8 @@ class Analytics extends \Spatie\Analytics\Analytics
         sort($timeline);
 
         // Keep only the last N buckets for the Trend column.
-        if (count($timeline) > $trendBarsCount) {
-            $timeline = array_slice($timeline, -$trendBarsCount);
+        if (\count($timeline) > $trendBarsCount) {
+            $timeline = \array_slice($timeline, -$trendBarsCount);
         }
 
         // Build Top Pages list (table rows)
@@ -159,8 +160,8 @@ class Analytics extends \Spatie\Analytics\Analytics
 
         // Sort by views desc and keep Top 25.
         usort($pages, fn ($a, $b) => ($b['views'] ?? 0) <=> ($a['views'] ?? 0));
-        if (count($pages) > $topPages) {
-            $pages = array_slice($pages, 0, $topPages);
+        if (\count($pages) > $topPages) {
+            $pages = \array_slice($pages, 0, $topPages);
         }
 
         return collect($pages);

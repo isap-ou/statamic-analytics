@@ -5,6 +5,9 @@ import TotalVisitorsAndPageviews from "./widgets/TotalVisitorsAndPageviews.vue";
 import MostVisitedPages from "./widgets/MostVisitedPages.vue";
 import TopReferrers from "./widgets/TopReferrers.vue";
 import UserTypes from "./widgets/UserTypes.vue";
+import TopBrowsers from "./widgets/TopBrowsers.vue";
+import TopCountries from "./widgets/TopCountries.vue";
+import TopOperatingSystems from "./widgets/TopOperatingSystems.vue";
 
 export default {
   components: {
@@ -12,7 +15,10 @@ export default {
     TotalVisitorsAndPageviews,
     VisitorsAndPageViewsByDate,
     MostVisitedPages,
+    TopBrowsers,
+    TopOperatingSystems,
     TopReferrers,
+    TopCountries,
     UserTypes
   },
   props: {
@@ -36,6 +42,7 @@ export default {
     return {
       pickerConfig: {
         mode: 'range',
+        readOnly: true,
         earliest_date: {date: Vue.moment().subtract(3, 'years').format('YYYY-MM-DD')},
         latest_date: {date: Vue.moment().format('YYYY-MM-DD')}
       },
@@ -49,6 +56,12 @@ export default {
   },
   methods: {
     setDate({date}) {
+      if (date == null) {
+        date = {
+          start: Vue.moment().subtract(1, 'months').format('YYYY-MM-DD'),
+          end: Vue.moment().subtract(1, 'days').format('YYYY-MM-DD'),
+        }
+      }
       this.$set(this.range, 'date', date)
     }
   }
