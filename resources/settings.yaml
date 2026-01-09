@@ -1,0 +1,73 @@
+fields:
+  - handle: property_id
+    field:
+      type: text
+      display: 'Property ID'
+      validate:
+        - required
+  - handle: handle
+    field:
+      type: hidden
+      default: 'default'
+  - handle: service_account_credentials
+    field:
+      type: files
+      display: 'Client secret json file'
+  - handle: widgets
+    field:
+      type: section
+      display: Widgets
+  - handle: visitors_and_page_views
+    field:
+      default: false
+      type: toggle
+      display: 'Visitors and page views'
+      width: 33
+  - handle: visitors_and_page_views_by_date
+    field:
+      default: false
+      type: toggle
+      width: 33
+      display: 'Visitors and page views by date'
+  - handle: total_visitors_and_pageviews
+    field:
+      default: false
+      type: toggle
+      display: 'Total visitors and pageviews'
+      width: 33
+  - handle: most_visited_pages
+    field:
+      default: false
+      type: toggle
+      display: 'Most visited pages'
+      width: 33
+  - handle: top_referrers
+    field:
+      default: false
+      type: toggle
+      display: 'Top referrers'
+      width: 33
+  - handle: user_types
+    field:
+      default: false
+      type: toggle
+      display: 'User Types'
+      width: 33
+  - handle: top_browsers
+    field:
+      default: false
+      type: toggle
+      display: 'Top browsers'
+      width: 33
+  - handle: top_countries
+    field:
+      default: false
+      type: toggle
+      display: 'Top countries'
+      width: 33
+  - handle: top_operating_systems
+    field:
+      default: false
+      type: toggle
+      display: 'Top operating systems'
+      width: 33

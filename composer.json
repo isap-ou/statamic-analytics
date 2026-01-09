@@ -1,0 +1,39 @@
+{
+    "name": "isapp/statamic-analytics",
+    "autoload": {
+        "psr-4": {
+            "Isapp\\GoogleAnalytics\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Isapp\\GoogleAnalytics\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "statamic/cms": "^5.0",
+        "spatie/laravel-analytics": "^5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0",
+        "laravel/pint": "^1"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Google Analytics",
+            "description": "Statamic Ga addon"
+        },
+        "laravel": {
+            "providers": [
+                "Isapp\\GoogleAnalytics\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
