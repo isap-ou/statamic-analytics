@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "chart.js": "^4",
+    "lodash-es": "^4.17.22",
     "vue": "^2.7",
     "vue-chartjs": "^4"
   }
