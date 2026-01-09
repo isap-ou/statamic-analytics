@@ -1,5 +1,9 @@
 {
     "name": "isapp/statamic-analytics",
+    "type": "statamic-addon",
+    "description": "Google Analytics (GA4) widgets for Statamic Control Panel powered by spatie/laravel-analytics.",
+    "license": "proprietary",
+    "keywords": ["statamic", "statamic-addon", "analytics", "ga4", "google-analytics"],
     "autoload": {
         "psr-4": {
             "Isapp\\GoogleAnalytics\\": "src/"
@@ -10,7 +14,19 @@
             "Isapp\\GoogleAnalytics\\Tests\\": "tests/"
         }
     },
+    "support": {
+        "issues": "https://github.com/isap-ou/statamic-analytics/issues",
+        "source": "https://github.com/isap-ou/statamic-analytics"
+    },
+    "authors": [
+        {
+            "name": "Andrii Trush",
+            "email": "andrii.trush@isapp.be"
+        }
+    ],
     "require": {
+        "php": "^8.2",
+        "ext-json": "*",
         "statamic/cms": "^5.0",
         "spatie/laravel-analytics": "^5"
     },
@@ -18,10 +34,16 @@
         "orchestra/testbench": "^9.0",
         "laravel/pint": "^1"
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "lint": "vendor/bin/pint",
+        "lint:fix": "vendor/bin/pint"
+    },
     "config": {
         "allow-plugins": {
             "pixelfear/composer-dist-plugin": true
-        }
+        },
+        "sort-packages": true
     },
     "extra": {
         "statamic": {
@@ -34,6 +56,6 @@
             ]
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
