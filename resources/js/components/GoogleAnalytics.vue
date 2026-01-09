@@ -1,10 +1,10 @@
 <script>
-import VisitorsAndPageViews from "./tables/VisitorsAndPageViews.vue";
-import VisitorsAndPageViewsByDate from "./tables/VisitorsAndPageViewsByDate.vue";
-import TotalVisitorsAndPageviews from "./charts/TotalVisitorsAndPageviews.vue";
-import MostVisitedPages from "./tables/MostVisitedPages.vue";
-import TopReferrers from "./tables/TopReferrers.vue";
-import UserTypes from "./tables/UserTypes.vue";
+import VisitorsAndPageViews from "./widgets/VisitorsAndPageViews.vue";
+import VisitorsAndPageViewsByDate from "./widgets/VisitorsAndPageViewsByDate.vue";
+import TotalVisitorsAndPageviews from "./widgets/TotalVisitorsAndPageviews.vue";
+import MostVisitedPages from "./widgets/MostVisitedPages.vue";
+import TopReferrers from "./widgets/TopReferrers.vue";
+import UserTypes from "./widgets/UserTypes.vue";
 
 export default {
   components: {
@@ -81,7 +81,7 @@ export default {
 </template>
 
 <style>
-.actions-column{
+.actions-column {
   display: none;
 }
 </style>

@@ -1,6 +1,6 @@
 <script>
-import chart from "./../../mixins/chart";
-import Card from "./../common/Card.vue";
+import chart from "../../mixins/chart";
+import Card from "../common/Card.vue";
 import fetch from "../../mixins/fetch";
 import {round, sumBy} from "lodash-es";
 
