@@ -1,3 +1,13 @@
+<!--
+  - Copyright (c) 2026 ISAPP (isapp.be)
+  - All rights reserved.
+  -
+  - This source code is proprietary and confidential.
+  - No part of this software may be reproduced, distributed, or transmitted in any form or by any means without prior written permission from ISAPP.
+  -
+  - License: Commercial. See LICENSE.md.
+  -->
+
 <script>
 import VisitorsAndPageViews from "./widgets/VisitorsAndPageViews.vue";
 import VisitorsAndPageViewsByDate from "./widgets/VisitorsAndPageViewsByDate.vue";
@@ -23,9 +33,12 @@ export default {
   },
   props: {
     charts: Array,
-    propertyId: String,
+    propertyId: Number,
+    start: String,
+    end: String,
     url: String
-  }, computed: {
+  },
+  computed: {
 
     chartOptions() {
       return {
@@ -48,8 +61,8 @@ export default {
       },
       range: {
         date: {
-          start: Vue.moment().subtract(1, 'months').format('YYYY-MM-DD'),
-          end: Vue.moment().subtract(1, 'days').format('YYYY-MM-DD'),
+          start: this.start,
+          end: this.end,
         }
       }
     }
@@ -58,8 +71,8 @@ export default {
     setDate({date}) {
       if (date == null) {
         date = {
-          start: Vue.moment().subtract(1, 'months').format('YYYY-MM-DD'),
-          end: Vue.moment().subtract(1, 'days').format('YYYY-MM-DD'),
+          start: this.start,
+          end: this.end,
         }
       }
       this.$set(this.range, 'date', date)

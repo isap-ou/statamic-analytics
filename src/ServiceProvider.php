@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * Copyright (c) 2026 ISAPP (isapp.be)
+ * All rights reserved.
+ *
+ * This source code is proprietary and confidential.
+ * No part of this software may be reproduced, distributed, or transmitted in any form or by any means without prior written permission from ISAPP.
+ *
+ * License: Commercial. See LICENSE.md.
+ */
+
 declare(strict_types=1);
 
 namespace Isapp\GoogleAnalytics;
@@ -32,8 +42,6 @@ class ServiceProvider extends AddonServiceProvider
     protected $widgets = [
         GoogleAnalytics::class,
     ];
-
-    public function register() {}
 
     public function bootAddon()
     {

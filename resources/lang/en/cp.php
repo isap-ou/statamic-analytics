@@ -52,4 +52,13 @@ return [
     'Engagement' => 'Engagement',
     'On Dashboard' => 'On Dashboard',
     'On Analytics Page' => 'On Analytics Page',
+    'DefaultDateRange' => 'Default date range',
+    'DefaultDateRangeInstructions' => 'Used as the initial range for the date picker when no range is selected yet.',
+    'Last 3 days' => 'Last 3 days',
+    'Last 7 days' => 'Last 7 days',
+    'Last 14 days' => 'Last 14 days',
+    'Last 30 days' => 'Last 30 days',
+    'Last 90 days' => 'Last 90 days',
+    'This month' => 'This month',
+    'Previous month' => 'Previous month',
 ];
