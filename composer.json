@@ -47,8 +47,8 @@
     },
     "extra": {
         "statamic": {
-            "name": "Google Analytics",
-            "description": "Statamic Ga addon"
+            "name": "Google Analytics (GA4) Dashboard",
+            "description": "GA4 widgets and insights inside the Control Panel."
         },
         "laravel": {
             "providers": [
