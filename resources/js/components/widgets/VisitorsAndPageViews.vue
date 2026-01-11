@@ -8,51 +8,52 @@
   - License: Commercial. See LICENSE.md.
   -->
 
-<script>
-import Card from "../common/Card.vue";
-import Table from "../common/Table.vue";
-import fetch from "../../mixins/fetch";
+<script setup>
 
-export default {
-  name: "VisitorsAndPageViews",
-  components: {Table, Card},
-  mixins: [fetch],
-  data() {
-    return {
+import Wrapper from "../common/Wrapper.vue";
+import {useFetch, widgetProps} from "../../composables/fetch";
+import {ref} from "vue";
+import {Listing} from "@statamic/cms/ui";
 
-      sortColumn: 'activeUsers',
-      sortDirection: 'desc',
-      columns: [{
-        'field': 'pageTitle',
-        'label': __('isapp-analytics::cp.Page Title'),
-        listable: true,
-        sortable: true,
-      }, {
-        'field': 'activeUsers',
-        'label': __('isapp-analytics::cp.Active users'),
-        numeric: true,
-        sortable: true,
-      }, {
-        'field': 'screenPageViews',
-        'label': __('isapp-analytics::cp.Page views'),
-        numeric: true,
-        sortable: true,
-      }]
-    }
-  }
-}
+const props = defineProps(widgetProps);
+
+const {loading, data} = useFetch('VisitorsAndPageViews', props);
+
+const columns = ref([{
+  'field': 'pageTitle',
+  'label': __('isapp-analytics::cp.Page Title'),
+  listable: true,
+  sortable: true,
+}, {
+  'field': 'activeUsers',
+  'label': __('isapp-analytics::cp.Active users'),
+  numeric: true,
+  sortable: true,
+}, {
+  'field': 'screenPageViews',
+  'label': __('isapp-analytics::cp.Page views'),
+  numeric: true,
+  sortable: true,
+}])
+
+
+const sortColumn = ref('activeUsers')
+const sortDirection = ref('desc')
 </script>
 
 <template>
-  <Card
+  <Wrapper
     header="Top Pages (Engagement)"
     :loading="loading"
     :no-data="!data.length"
   >
-    <Table v-bind="{columns, data, sortColumn, sortDirection}"/>
-  </Card>
+    <Listing
+      :items="data"
+      :sortDirection
+      :sortColumn
+      :columns="columns"
+      :allow-customizing-columns="false"
+    />
+  </Wrapper>
+
 </template>
-
-<style scoped>
-
-</style>

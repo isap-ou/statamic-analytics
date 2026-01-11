@@ -72,7 +72,7 @@ trait HasView
                 'end' => Carbon::now()->subMonth()->endOfMonth()->format('Y-m-d'),
             ],
             default => [
-                'start' => Carbon::now()->format('Y-m-d'),
+                'start' => Carbon::now()->subMonth()->format('Y-m-d'),
                 'end' => Carbon::now()->format('Y-m-d'),
             ]
         };
