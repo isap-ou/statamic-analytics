@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 return [
     'configure_analytics' => 'Configure Analytics',
+    'Analytics (GA4)' => 'Analytics (GA4)',
     'WidgetsHeadline' => 'Enable preferable widgets',
     'WidgetsInstructions' => 'Drag & drop to reorder widgets.',
     'AddWidget' => 'Add widget',

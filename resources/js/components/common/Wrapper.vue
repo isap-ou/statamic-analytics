@@ -1,0 +1,61 @@
+<!--
+  - Copyright (c) 2026 ISAPP (isapp.be)
+  - All rights reserved.
+  -
+  - This source code is proprietary and confidential.
+  - No part of this software may be reproduced, distributed, or transmitted in any form or by any means without prior written permission from ISAPP.
+  -
+  - License: Commercial. See LICENSE.md.
+  -->
+
+<script setup>
+import {Card, Header, Icon, Panel} from "@statamic/cms/ui";
+
+defineProps({
+  header: String,
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  noData: {
+    type: Boolean,
+    default: false
+  }
+})
+</script>
+
+<template>
+  <div>
+    <Header
+      :title="__('isapp-analytics::cp.' + header)"
+    ></Header>
+    <template v-if="!loading && !noData">
+      <slot/>
+    </template>
+    <Panel v-else-if="!loading && noData">
+      <Card>
+        <div
+          class="p-4 text-gray-700 text-sm text-center"
+          v-text="__('No results')"
+        >
+        </div>
+      </Card>
+    </Panel>
+
+    <Panel
+      v-else-if="loading"
+    >
+      <Card>
+        <div
+          class="loading flex h-full items-center justify-center"
+        >
+          <Icon name="loading"/>
+        </div>
+      </Card>
+    </Panel>
+  </div>
+</template>
+
+<style scoped>
+
+</style>

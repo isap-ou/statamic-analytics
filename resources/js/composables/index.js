@@ -8,10 +8,6 @@
  * License: Commercial. See LICENSE.md.
  */
 
-import GoogleAnalytics from "./components/Analytics.vue";
-import ConfigForm from "./components/ConfigForm.vue";
 
-Statamic.booting(() => {
-    Statamic.$components.register("isapp-analytics", GoogleAnalytics);
-    Statamic.$components.register("isapp-analytics-settings", ConfigForm);
-});
+export default {
+}
