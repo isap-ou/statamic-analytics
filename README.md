@@ -3,9 +3,8 @@
 Transform your Statamic Control Panel into a powerful analytics hub. Monitor your site's performance, understand your audience, and make data-driven content decisions without leaving your CMS.
 
 ![Statamic 5.0+](https://img.shields.io/badge/Statamic-5.0+-FF269E?style=for-the-badge&link=https://statamic.com)
-[![License](https://img.shields.io/badge/license-Commercial-important?style=for-the-badge)](./LICENSE.md)
-[![Latest Version](https://img.shields.io/github/v/release/isap-ou/statamic-analytics?style=for-the-badge)](https://github.com/isap-ou/statamic-analytics/releases)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/isapp/statamic-analytics?style=for-the-badge)](https://packagist.org/packages/isapp/statamic-analytics)
+![Statamic 6.0+](https://img.shields.io/badge/Statamic-6.0+-FF269E?style=for-the-badge&link=https://statamic.com)
+[![License](https://img.shields.io/badge/license-Proprietary-important?style=for-the-badge)](./LICENSE.md)
 > **Commercial Addon**  
 > This is paid software. You may use it for development and evaluation, but a valid license from the Statamic Marketplace is required for production use.
 
