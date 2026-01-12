@@ -17,7 +17,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Normalize version
         id: v
@@ -82,8 +84,10 @@ jobs:
 
       - name: Push commit
         run: |
-          # push back to the default branch (detect HEAD branch)
-          TARGET=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+          # push back to the same branch the workflow runs on
+          TARGET="${GITHUB_REF_NAME}"
+          git fetch origin "$TARGET"
+          git rebase "origin/$TARGET"
           git push origin HEAD:"$TARGET"
 
       - name: Create tag
@@ -96,16 +100,16 @@ jobs:
           git tag "$TAG"
           git push origin "$TAG"
 
-      - name: Cleanup built assets from default branch
+      - name: Cleanup built assets from release branch
         run: |
-          # remove built assets from the branch after tagging; the tag still points to the commit with dist
+          # remove built assets from the release branch after tagging; the tag still points to the commit with dist
           rm -rf resources/dist
           git add -A
           if git diff --cached --quiet; then
             echo "No changes"; exit 0
           fi
           git commit -m "chore: cleanup built assets after release ${{ steps.v.outputs.version }}"
-          TARGET=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+          TARGET="${GITHUB_REF_NAME}"
           git push origin HEAD:"$TARGET"
 
       - name: Create GitHub Release
