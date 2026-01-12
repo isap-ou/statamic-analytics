@@ -96,10 +96,19 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 
 This addon uses the following open-source software:
 
-- **spatie/laravel-analytics** (MIT License) - [https://github.com/spatie/laravel-analytics](https://github.com/spatie/laravel-analytics)
+- **spatie/laravel-analytics** (MIT License) - https://github.com/spatie/laravel-analytics
+- **Chart.js** (MIT License) - Charting library used for Statamic 5
+- **ApexCharts** - Charting library used for Statamic 6
 - **Google Analytics 4 Data API** - Subject to Google's Terms of Service
 
-Google Analytics and GA4 are trademarks of Google LLC. This addon is not affiliated with or endorsed by Google.
+### ApexCharts Licensing
+
+ApexCharts is distributed under a dual licensing model:
+
+- **Community License (Free):** Permitted for individuals and organizations with less than USD 2 million in annual revenue, including commercial use under those conditions.
+- **Commercial License (Paid):** Required for organizations generating USD 2 million or more in annual revenue.
+
+By using this addon, any included usage of ApexCharts must comply with the license terms published by the ApexCharts project.
 
 ---
 
