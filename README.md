@@ -101,7 +101,7 @@ There are two ways to add GA4 widgets to your dashboard:
 #### Option A: Using the Control Panel (Recommended)
 
 1. Navigate to your **Control Panel**
-2. Go to **Preferences → Widgets**
+2. Go to **Preferences → Widgets**FTech
 3. Click **Add Widget**
 4. Select the GA4 widgets you want to display
 5. Configure widget settings and save
@@ -162,11 +162,26 @@ Once configured, your GA4 data will automatically populate in the Control Panel.
 
 ## Technical Details
 
+### Statamic Version Support
+
+This addon fully supports both **Statamic 5** and **Statamic 6**.
+
+Because Statamic 5 and Statamic 6 use different front-end stacks, the addon uses different charting engines depending on the CMS version:
+
+| Statamic Version | Front-end stack | Charting library |
+|-----------------|----------------|------------------|
+| Statamic 5.x    | Vue 2          | Chart.js (MIT)   |
+| Statamic 6.x    | Vue 3          | ApexCharts (MIT) |
+
+This ensures native UI integration, long-term compatibility, and optimal performance on each platform.
+
 ### Built On Trusted Technology
 
 This addon leverages proven, open-source packages:
 
-- **spatie/laravel-analytics** (MIT License) – Reliable GA4 API integration used by thousands of Laravel applications
+- **spatie/laravel-analytics** (MIT License) – GA4 API integration
+- **Chart.js** (MIT License) – Charting engine used for Statamic 5
+- **ApexCharts** (MIT License) – Charting engine used for Statamic 6
 - **Google Analytics 4 Data API** – Official Google API for programmatic data access
 
 ### No Data Storage
