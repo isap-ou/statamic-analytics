@@ -1,71 +1,49 @@
-<!--
-  - Copyright (c) 2026 ISAPP (isapp.be)
-  - All rights reserved.
-  -
-  - This source code is proprietary and confidential.
-  - No part of this software may be reproduced, distributed, or transmitted in any form or by any means without prior written permission from ISAPP.
-  -
-  - License: Commercial. See LICENSE.md.
-  -->
+<script setup>
+import AnalyticsWrapper from "../common/AnalyticsWrapper.vue";
+import { computed, shallowRef } from "vue";
+import { useFetch, widgetProps } from "../../composables/fetch.js";
+import StatisticTable from "../common/StatisticTable.vue";
 
-<script>
-import Card from "../common/Card.vue";
-import fetch from "../../mixins/fetch";
-import Table from "../common/Table.vue";
-import pagination from "../../mixins/pagination";
+const props = defineProps(widgetProps);
 
-export default {
-  name: "MostVisitedPages",
-  components: {Table, Card},
-  mixins: [fetch, pagination],
-  data() {
-    return {
-      sortColumn: 'screenPageViews',
-      sortDirection: 'desc',
-      columns: [{
-        'field': 'pageTitle',
-        'label': __('isapp-analytics::cp.Page'),
-        listable: true,
-        sortable: true,
-      }, {
-        'field': 'screenPageViews',
-        'label': __('isapp-analytics::cp.Views'),
-        numeric: true,
-        sortable: true,
-      }]
-    }
+const { loading, data, ensureSchema } = useFetch("MostVisitedPages", props);
+const columns = shallowRef([
+  {
+    field: "pageTitle",
+    label: __("isapp-analytics::cp.Page"),
+    listable: true,
+    sortable: true,
   },
-  computed: {
-    items() {
-      return this.data.map(item => ({
-        url: this.ensureSchema(item.fullPageUrl),
-        ...item
-      }))
-    }
-  }
-}
+  {
+    field: "screenPageViews",
+    label: __("isapp-analytics::cp.Views"),
+    numeric: true,
+    sortable: true,
+  },
+]);
+const sortColumn = shallowRef("screenPageViews");
+const sortDirection = shallowRef("desc");
+
+const items = computed(() =>
+  data.value.map((item) => ({
+    url: ensureSchema(item.fullPageUrl),
+    ...item,
+  })),
+);
 </script>
 
 <template>
-  <Card
+  <AnalyticsWrapper
+    header="Most Visited Pages"
     :loading="loading"
     :no-data="!data.length"
-    header="Most Visited Pages"
   >
-    <Table v-bind="{columns, data: items, sortColumn, sortDirection}">
-      <template
-        slot="cell-pageTitle"
-        slot-scope="{ row: item, value }"
-      >
-        <a
-          :href="item.url"
-          target="_blank"
-        >{{ value }}</a>
+    <StatisticTable :data="items" :columns :sort-column :sort-direction>
+      <template #cell-pageTitle="{ row: item, value }">
+        <a :href="item.url" target="_blank">{{ value }}</a>
       </template>
-    </Table>
-  </Card>
+    </StatisticTable>
+  </AnalyticsWrapper>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

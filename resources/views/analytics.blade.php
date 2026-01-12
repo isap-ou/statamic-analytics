@@ -8,7 +8,6 @@
         <div class="widget w-full md:w-full mb-8 px-4">
             @include('isapp-analytics::widget', [
             compact('charts', 'property_id', 'start', 'end'),
-
         ])
         </div>
     </div>

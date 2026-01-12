@@ -3,3 +3,13 @@ vendor
 composer.lock
 .phpunit.result.cache
 /resources/dist/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/copilot.data.migration.ask2agent.xml
+/.idea/laravel-idea.xml
+/.idea/laravel-idea-personal.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/statamic-ga.iml
+/.idea/symfony2.xml
+/.idea/vcs.xml

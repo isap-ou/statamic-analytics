@@ -18,3 +18,5 @@ package.json merge=ours
 yarn.lock merge=ours
 resources/js merge=ours
 resources/css merge=ours
+.prettierrc.json merge=ours
+eslint.config.js merge=ours

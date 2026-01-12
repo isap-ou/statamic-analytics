@@ -24,7 +24,6 @@ use Statamic\Facades\CP\Nav;
 use Statamic\Providers\AddonServiceProvider;
 
 use function app;
-use function class_exists;
 use function config;
 
 class ServiceProvider extends AddonServiceProvider
@@ -45,17 +44,13 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        if (! class_exists(\Spatie\Analytics\Contracts\Analytics::class)) {
-            $this->app->singleton('laravel-analytics', function () {
-                $analyticsConfig = config('analytics');
+        $this->app->singleton('laravel-analytics', function () {
+            $analyticsConfig = config('analytics');
 
-                $client = app(AnalyticsClient::class);
+            $client = app(AnalyticsClient::class);
 
-                return new Analytics($client, $analyticsConfig['property_id']);
-            });
-        } else {
-            $this->app->bind(\Spatie\Analytics\Contracts\Analytics::class, Analytics::class);
-        }
+            return new Analytics($client, $analyticsConfig['property_id']);
+        });
 
         Nav::extend(function ($nav) {
             $nav->tools('Analytics')

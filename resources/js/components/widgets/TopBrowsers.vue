@@ -1,94 +1,81 @@
-<!--
-  - Copyright (c) 2026 ISAPP (isapp.be)
-  - All rights reserved.
-  -
-  - This source code is proprietary and confidential.
-  - No part of this software may be reproduced, distributed, or transmitted in any form or by any means without prior written permission from ISAPP.
-  -
-  - License: Commercial. See LICENSE.md.
-  -->
+<script setup>
+import AnalyticsWrapper from "../common/AnalyticsWrapper.vue";
+import { useFetch, widgetProps } from "../../composables/fetch";
+import { Card, Listing, Panel } from "@statamic/cms/ui";
+import { computed, ref } from "vue";
+import { round, sumBy } from "lodash-es";
+import VueApexCharts from "vue3-apexcharts";
 
-<script>
-import Card from "../common/Card.vue";
-import Table from "../common/Table.vue";
-import pagination from "../../mixins/pagination";
-import fetch from "../../mixins/fetch";
-import {round, sumBy, trim} from "lodash-es";
-import chart from "../../mixins/chart";
+import { colorMode } from "@statamic/cms/api";
 
-export default {
-  name: "TopBrowsers",
-  methods: {trim},
-  mixins: [fetch, pagination, chart],
-  components: {Table, Card},
-  data() {
-    return {
+const props = defineProps(widgetProps);
+const { loading, data } = useFetch("TopBrowsers", props);
 
-      sortColumn: 'screenPageViews',
-      sortDirection: 'desc',
-      columns: [{
-        'field': 'browser',
-        'label': __('isapp-analytics::cp.Browser'),
-      }, {
-        'field': 'screenPageViews',
-        'label': __('isapp-analytics::cp.Page views'),
-        numeric: true,
-      }, {
-        'field': 'share',
-        'label': __('isapp-analytics::cp.Share'),
-      }]
-    }
+const columns = ref([
+  {
+    field: "browser",
+    label: __("isapp-analytics::cp.Browser"),
   },
+  {
+    field: "screenPageViews",
+    label: __("isapp-analytics::cp.Page views"),
+    numeric: true,
+  },
+  {
+    field: "share",
+    label: __("isapp-analytics::cp.Share"),
+  },
+]);
 
-  computed: {
-    items() {
-      const total = sumBy(this.data, 'screenPageViews')
-      return this.data.map(item => ({
-        browser: item.browser,
-        screenPageViews: item.screenPageViews,
-        share: round(item.screenPageViews * 100 / total, 2) + '%'
-      }))
-    },
+const items = computed(() => {
+  const total = sumBy(data.value, "screenPageViews");
+  return data.value.map((item) => ({
+    browser: item.browser,
+    screenPageViews: item.screenPageViews,
+    share: round((item.screenPageViews * 100) / total, 2) + "%",
+  }));
+});
 
-    chartData() {
-
-      return {
-        labels: this.data.map(item => item.browser),
-        datasets: [
-          {
-            data: this.data.map(item => item.screenPageViews),
-            backgroundColor: this.chartColors,
-            hoverOffset: 4
-          }]
-      }
-
-    },
-  }
-}
+const series = computed(() => data.value.map((item) => item.screenPageViews));
+const options = computed(() => ({
+  theme: {
+    mode: colorMode.mode.value,
+  },
+  legend: {
+    position: "top",
+  },
+  labels: data.value.map((item) => item.browser),
+}));
 </script>
 
 <template>
-  <Card
+  <AnalyticsWrapper
+    header="Top Browsers"
     :loading="loading"
     :no-data="!data.length"
-    header="Top Browsers"
   >
-
-    <div class="grid grid-cols-1 lg:flex flex-row gap-6 p-4 items-center justify-center">
-
-      <div class="col-span-2 lg:max-w-72">
-        <div v-if="!loading">
-          <chart-pie
-            :chart-data="chartData"
-            :chart-options="chartOptions"
-          />
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-5! gap-6">
+      <div class="col-span-3">
+        <Panel>
+          <Card>
+            <VueApexCharts
+              type="pie"
+              :series="series"
+              :options="options"
+              width="100%"
+              class="rounded-xl overflow-hidden"
+            />
+          </Card>
+        </Panel>
       </div>
-      <Table
-        v-bind="{columns, sortColumn,sortDirection, data: items}"
-        no-pagination
-        class="col-span-1"
-      />
+      <div class="col-span-2">
+        <Listing
+          :columns
+          :items
+          :allow-customizing-columns="false"
+          :allow-search="false"
+        />
+      </div>
     </div>
-  </Card>
+  </AnalyticsWrapper>
 </template>

@@ -8,51 +8,45 @@
   - License: Commercial. See LICENSE.md.
   -->
 
-<script>
-import Card from "../common/Card.vue";
-import Table from "../common/Table.vue";
-import pagination from "../../mixins/pagination";
-import fetch from "../../mixins/fetch";
-import {trim} from "lodash-es";
+<script setup>
+import AnalyticsWrapper from "../common/AnalyticsWrapper.vue";
+import StatisticTable from "../common/StatisticTable.vue";
+import { useFetch, widgetProps } from "../../composables/fetch";
+import { ref } from "vue";
+import { trim } from "lodash-es";
 
-export default {
-  name: "TopReferrers",
-  methods: {trim},
-  mixins: [fetch, pagination],
-  components: {Table, Card},
-  data() {
-    return {
+const props = defineProps(widgetProps);
+const { loading, data } = useFetch("TopReferrers", props);
 
-      sortColumn: 'screenPageViews',
-      sortDirection: 'desc',
-      columns: [{
-        'field': 'pageReferrer',
-        'label': __('isapp-analytics::cp.Referrer'),
-        sortable: true,
-      }, {
-        'field': 'screenPageViews',
-        'label': __('isapp-analytics::cp.Page views'),
-        numeric: true,
-        sortable: true,
-      }]
-    }
-  }
-}
+const columns = ref([
+  {
+    field: "pageReferrer",
+    label: __("isapp-analytics::cp.Referrer"),
+    sortable: true,
+  },
+  {
+    field: "screenPageViews",
+    label: __("isapp-analytics::cp.Page views"),
+    numeric: true,
+    sortable: true,
+  },
+]);
+const sortColumn = ref("screenPageViews");
+const sortDirection = ref("desc");
 </script>
 
 <template>
-  <Card
+  <AnalyticsWrapper
+    header="Top Referrers"
     :loading="loading"
     :no-data="!data.length"
-    header="Top referrers"
   >
-    <Table v-bind="{columns, sortColumn,sortDirection, data}">
-      <template
-        slot="cell-pageReferrer"
-        slot-scope="{ row: item, value }"
-      >
-        <span v-text="trim(value) === ''? 'Direct / No referrer': value "></span>
+    <StatisticTable :data :columns :sort-direction :sort-column>
+      <template #cell-pageReferrer="{ value }">
+        <span v-text="trim(value) === '' ? 'Direct / No referrer' : value" />
       </template>
-    </Table>
-  </Card>
+    </StatisticTable>
+  </AnalyticsWrapper>
 </template>
+
+<style scoped></style>

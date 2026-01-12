@@ -28,7 +28,9 @@ defineProps({
   <div>
     <Header
       :title="__('isapp-analytics::cp.' + header)"
+      class="pb-6!"
     ></Header>
+
     <template v-if="!loading && !noData">
       <slot/>
     </template>
@@ -42,17 +44,12 @@ defineProps({
       </Card>
     </Panel>
 
-    <Panel
-      v-else-if="loading"
+    <div
+      if="loading"
+      class="loading flex h-full items-center justify-center"
     >
-      <Card>
-        <div
-          class="loading flex h-full items-center justify-center"
-        >
-          <Icon name="loading"/>
-        </div>
-      </Card>
-    </Panel>
+      <Icon name="loading"/>
+    </div>
   </div>
 </template>
 
