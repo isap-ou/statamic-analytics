@@ -1,0 +1,168 @@
+{
+  "_StatisticTable-BtPpfZEj.js": {
+    "file": "assets/StatisticTable-BtPpfZEj.js",
+    "name": "StatisticTable",
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js"
+    ]
+  },
+  "__baseIteratee-klvwBlzp.js": {
+    "file": "assets/_baseIteratee-klvwBlzp.js",
+    "name": "_baseIteratee",
+    "imports": [
+      "resources/js/addon.js"
+    ]
+  },
+  "__baseTrim-tncAhSry.js": {
+    "file": "assets/_baseTrim-tncAhSry.js",
+    "name": "_baseTrim"
+  },
+  "_api-CPlectOK.js": {
+    "file": "assets/api-CPlectOK.js",
+    "name": "api",
+    "imports": [
+      "__baseIteratee-klvwBlzp.js",
+      "__baseTrim-tncAhSry.js",
+      "resources/js/addon.js"
+    ]
+  },
+  "resources/css/addon.css": {
+    "file": "assets/addon-fGorTY4u.css",
+    "src": "resources/css/addon.css",
+    "isEntry": true
+  },
+  "resources/js/addon.js": {
+    "file": "assets/addon-Z2Ri73Cc.js",
+    "name": "addon",
+    "src": "resources/js/addon.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/components/widgets/MostVisitedPages.vue",
+      "resources/js/components/widgets/TopBrowsers.vue",
+      "resources/js/components/widgets/TopCountries.vue",
+      "resources/js/components/widgets/TopOperatingSystems.vue",
+      "resources/js/components/widgets/TopReferrers.vue",
+      "resources/js/components/widgets/TotalVisitorsAndPageviews.vue",
+      "resources/js/components/widgets/UserTypes.vue",
+      "resources/js/components/widgets/VisitorsAndPageViews.vue",
+      "resources/js/components/widgets/VisitorsAndPageViewsByDate.vue",
+      "resources/js/components/widgets/MostVisitedPages.vue",
+      "resources/js/components/widgets/TopBrowsers.vue",
+      "resources/js/components/widgets/TopCountries.vue",
+      "resources/js/components/widgets/TopOperatingSystems.vue",
+      "resources/js/components/widgets/TopReferrers.vue",
+      "resources/js/components/widgets/TotalVisitorsAndPageviews.vue",
+      "resources/js/components/widgets/UserTypes.vue",
+      "resources/js/components/widgets/VisitorsAndPageViews.vue",
+      "resources/js/components/widgets/VisitorsAndPageViewsByDate.vue"
+    ]
+  },
+  "resources/js/components/widgets/MostVisitedPages.vue": {
+    "file": "assets/MostVisitedPages-CnA_jYa1.js",
+    "name": "MostVisitedPages",
+    "src": "resources/js/components/widgets/MostVisitedPages.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_StatisticTable-BtPpfZEj.js"
+    ]
+  },
+  "resources/js/components/widgets/TopBrowsers.vue": {
+    "file": "assets/TopBrowsers-Bt5f76pF.js",
+    "name": "TopBrowsers",
+    "src": "resources/js/components/widgets/TopBrowsers.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_api-CPlectOK.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/TopCountries.vue": {
+    "file": "assets/TopCountries-BNQhi0XJ.js",
+    "name": "TopCountries",
+    "src": "resources/js/components/widgets/TopCountries.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_api-CPlectOK.js",
+      "_StatisticTable-BtPpfZEj.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/TopOperatingSystems.vue": {
+    "file": "assets/TopOperatingSystems-BmvrfjRG.js",
+    "name": "TopOperatingSystems",
+    "src": "resources/js/components/widgets/TopOperatingSystems.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_api-CPlectOK.js",
+      "_StatisticTable-BtPpfZEj.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/TopReferrers.vue": {
+    "file": "assets/TopReferrers-DgWgKXEY.js",
+    "name": "TopReferrers",
+    "src": "resources/js/components/widgets/TopReferrers.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_StatisticTable-BtPpfZEj.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/TotalVisitorsAndPageviews.vue": {
+    "file": "assets/TotalVisitorsAndPageviews-B2SZO4sX.js",
+    "name": "TotalVisitorsAndPageviews",
+    "src": "resources/js/components/widgets/TotalVisitorsAndPageviews.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_api-CPlectOK.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/UserTypes.vue": {
+    "file": "assets/UserTypes-BnbBrPAm.js",
+    "name": "UserTypes",
+    "src": "resources/js/components/widgets/UserTypes.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_api-CPlectOK.js",
+      "__baseTrim-tncAhSry.js"
+    ]
+  },
+  "resources/js/components/widgets/VisitorsAndPageViews.vue": {
+    "file": "assets/VisitorsAndPageViews-QRw2bbIz.js",
+    "name": "VisitorsAndPageViews",
+    "src": "resources/js/components/widgets/VisitorsAndPageViews.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_StatisticTable-BtPpfZEj.js"
+    ]
+  },
+  "resources/js/components/widgets/VisitorsAndPageViewsByDate.vue": {
+    "file": "assets/VisitorsAndPageViewsByDate-TqmxN11T.js",
+    "name": "VisitorsAndPageViewsByDate",
+    "src": "resources/js/components/widgets/VisitorsAndPageViewsByDate.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/addon.js",
+      "__baseIteratee-klvwBlzp.js",
+      "_StatisticTable-BtPpfZEj.js"
+    ]
+  }
+}
