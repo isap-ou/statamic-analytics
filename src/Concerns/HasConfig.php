@@ -10,16 +10,14 @@
  * License: Commercial. See LICENSE.md.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Isapp\GoogleAnalytics\Concerns;
 
-use Isapp\GoogleAnalytics\Models\Config;
 use Statamic\Facades\Addon;
 
 trait HasConfig
 {
-
     protected function values(): array
     {
         return Addon::get('isapp/statamic-analytics')->settings()->all();

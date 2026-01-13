@@ -10,14 +10,13 @@
  * License: Commercial. See LICENSE.md.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Isapp\GoogleAnalytics;
 
 use Illuminate\Support\Facades\Route;
 use Isapp\GoogleAnalytics\Analytics\Analytics;
 use Isapp\GoogleAnalytics\Controllers\AnalyticsController;
-use Isapp\GoogleAnalytics\Controllers\ConfigController;
 use Isapp\GoogleAnalytics\Widgets\GoogleAnalytics;
 use Spatie\Analytics\AnalyticsClient;
 use Statamic\Facades\CP\Nav;
@@ -60,7 +59,7 @@ class ServiceProvider extends AddonServiceProvider
                                 ],
                                 [
                                     'handle' => 'handle',
-                                    'field' => ['type' => 'hidden', 'default' => 'default',],
+                                    'field' => ['type' => 'hidden', 'default' => 'default'],
                                 ],
                                 [
                                     'handle' => 'default_date_range',
@@ -109,7 +108,7 @@ class ServiceProvider extends AddonServiceProvider
                                                         'top_countries' => 'isapp-analytics::cp.Top countries',
                                                         'top_operating_systems' => 'isapp-analytics::cp.Top operating systems',
                                                     ],
-                                                    'validate' => ['required',],
+                                                    'validate' => ['required'],
                                                 ],
                                             ],
                                             [
