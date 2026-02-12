@@ -95,8 +95,23 @@ When making changes, optimize for reliability, compatibility with Statamic 5 and
     - `WIDGETS.md`
     - `phpunit.xml`
     - `pint.json`
-
   - Do not mix these changes with branch-specific frontend/config refactors in the same commit.
+- Cherry-pick PR workflow for shared files:
+  - Use this workflow when merged shared-file changes must be mirrored between `5.x` and `6.x`.
+  - Keep source commit isolated to shared files only.
+  - Create branch from destination base:
+    - `git checkout <destination-branch>`
+    - `git checkout -b chore/cherry-pick-<short-sha>`
+  - Apply source commit with provenance:
+    - `git cherry-pick -x <source-sha>`
+  - Open dedicated PR to destination base branch.
+  - PR title:
+    - `chore: cherry-pick <short-sha> from <source-branch>`
+  - PR body must include:
+    - Source commit SHA.
+    - Source PR link.
+    - Exact list of changed files.
+    - Validation note: no branch-specific behavior introduced.
 - Commit message format:
   - Subject line: `<type>: <short summary>`
   - Empty line after subject.
