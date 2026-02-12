@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Isapp\StatamicGa\Tests;
+namespace Isapp\GoogleAnalytics\Tests;
 
 use Isapp\StatamicGa\ServiceProvider;
 use Statamic\Testing\AddonTestCase;
