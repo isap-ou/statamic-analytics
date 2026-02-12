@@ -80,6 +80,23 @@ When making changes, optimize for reliability, compatibility with Statamic 5 and
 - Do not push unless explicitly requested.
 - Before commit, review scope with `git status` and `git diff --stat`.
 - Keep commits atomic: one logical change per commit when possible.
+- Cross-branch cherry-pick rule:
+  - If changes touch any of the files below, create a dedicated commit that contains only cross-branch-safe changes for these files.
+  - Target files:
+    - `.gitattributes`
+    - `AGENTS.md`
+    - `src/Analytics/Analytics.php`
+    - `src/Controllers/AnalyticsController.php`
+    - `src/Widgets/GoogleAnalytics.php`
+    - `src/Concerns/HasView.php`
+    - `.gitignore`
+    - `LICENSE.md`
+    - `README.md`
+    - `WIDGETS.md`
+    - `phpunit.xml`
+    - `pint.json`
+
+  - Do not mix these changes with branch-specific frontend/config refactors in the same commit.
 - Commit message format:
   - Subject line: `<type>: <short summary>`
   - Empty line after subject.
