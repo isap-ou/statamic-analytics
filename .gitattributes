@@ -10,7 +10,7 @@ yarn.lock               export-ignore
 vite.config.js               export-ignore
 postcss.config.js               export-ignore
 WIDGETS.md               export-ignore
-AGENTS.md               export-ignore
+CLAUDE.md               export-ignore
 tailwind.config.js               export-ignore
 composer.json merge=ours
 composer.lock merge=ours

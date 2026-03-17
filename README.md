@@ -65,7 +65,7 @@ All widgets are configurable through the addon settings interface. Choose which 
 Install via Composer:
 
 ```bash
-composer require isap-ou/statamic-analytics
+composer require isapp/statamic-analytics
 ```
 
 ---
@@ -101,7 +101,7 @@ There are two ways to add GA4 widgets to your dashboard:
 #### Option A: Using the Control Panel (Recommended)
 
 1. Navigate to your **Control Panel**
-2. Go to **Preferences → Widgets**FTech
+2. Go to **Preferences → Widgets**
 3. Click **Add Widget**
 4. Select the GA4 widgets you want to display
 5. Configure widget settings and save
@@ -121,7 +121,7 @@ Edit your `config/statamic/cp.php` file and add widgets to the `widgets` array:
 ### 4. Configure Widget Settings
 
 Navigate to **Control Panel → Settings → Analytics Settings** to customize:
-- Property ID (by default it get from config)
+- Property ID (by default it gets from config)
 - Default date ranges for widgets
 - Metrics to display
 
@@ -152,9 +152,13 @@ Once configured, your GA4 data will automatically populate in the Control Panel.
 
 ## Requirements
 
-- Statamic 5.0 or higher
-- PHP 8.1 or higher
-- Laravel 10.0 or higher
+| Requirement | 5.x branch | 6.x branch |
+|-------------|-----------|-----------|
+| Statamic    | ^5.0      | ^6.0      |
+| PHP         | ^8.1      | ^8.2      |
+| Laravel     | ^10.0     | ^12.0     |
+
+Both branches also require:
 - A Google Analytics 4 property
 - Google Cloud service account with Analytics API enabled
 
