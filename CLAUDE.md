@@ -1,4 +1,4 @@
-# AGENTS.md
+# CLAUDE.md
 
 ## Purpose
 This repository contains a proprietary Statamic addon that shows GA4 analytics inside the Statamic Control Panel.
@@ -84,7 +84,7 @@ When making changes, optimize for reliability, compatibility with Statamic 5 and
   - If changes touch any of the files below, create a dedicated commit that contains only cross-branch-safe changes for these files.
   - Target files:
     - `.gitattributes`
-    - `AGENTS.md`
+    - `CLAUDE.md`
     - `src/Analytics/Analytics.php`
     - `src/Controllers/AnalyticsController.php`
     - `src/Widgets/GoogleAnalytics.php`
